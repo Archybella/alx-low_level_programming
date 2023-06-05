@@ -1,14 +1,12 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
-* find_listint_loop_pl - find_listint_loop_pl - detects loop in linked list
-*
-* @head: linked list toexamine
-*
-* Return:address of loop starting/returning node, NULL if no loop
-*/
+ * free_listp - frees a linked list
+ *
+ * @head: head of a list.
+ *
+ * Return: no return.
+ */
 
 void free_listp(listp_t **head)
 
