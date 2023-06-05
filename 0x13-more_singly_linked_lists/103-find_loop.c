@@ -8,24 +8,119 @@
 *
 * Return: address of loop starting/returning node, NULL if no loop
 */
-listint_t *find_listint_loop(listint_t *head)
+
+void free_listp(listp_t **head)
+
 {
-	if (head == NULL)
-		return (NULL);
 
-	listint_t *ptr, *end;
+		listp_t *temp;
 
-	for (end = head->next; end != NULL; end = end->next)
-	{
-		if (end == end->next)
-			return (end);
+			listp_t *curr;
 
-		for (ptr = head; ptr != end; ptr = ptr->next)
-		{
-			if (ptr == end->next)
-				return (end->next);
-		}
-	}
 
-	return (NULL);
+
+				if (head != NULL)
+
+						{
+
+									curr = *head;
+
+											while ((temp = curr) != NULL)
+
+														{
+
+																		curr = curr->next;
+
+																					free(temp);
+
+																							}
+
+												*head = NULL;
+
+													}
+
+}
+
+/**
+ * print_listint_safe - publishes a linked list
+ * @head: head of a list.
+ *
+ * Return: count of nodes in the list.
+ *
+ */
+
+size_t print_listint_safe(const listint_t *head)
+
+{
+
+		size_t nnodes = 0;
+
+			listp_t *hptr, *new, *add;
+
+
+
+				hptr = NULL;
+
+					while (head != NULL)
+
+							{
+
+										new = malloc(sizeof(listp_t));
+
+
+
+												if (new == NULL)
+
+																exit(98);
+
+
+
+														new->p = (void *)head;
+
+																new->next = hptr;
+
+																		hptr = new;
+
+
+
+																				add = hptr;
+
+
+
+																						while (add->next != NULL)
+
+																									{
+
+																													add = add->next;
+
+																																if (head == add->p)
+
+																																				{
+
+																																									printf("-> [%p] %d\n", (void *)head, head->n);
+
+																																													free_listp(&hptr);
+
+																																																	return (nnodes);
+
+																																																				}
+
+																																		}
+
+
+
+																								printf("[%p] %d\n", (void *)head, head->n);
+
+																										head = head->next;
+
+																												nnodes++;
+
+																													}
+
+
+
+						free_listp(&hptr);
+
+							return (nnodes);
+
 }

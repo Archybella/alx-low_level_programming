@@ -2,7 +2,7 @@
 
 /**
 * free_listint_safe - safely frees a linked list
-Q* @h:  pointer to the head of the list
+* @h:  pointer to the head of the list
 * Description: This function frees a linked list in a safe manner
 * section header: the header of this function is lists.h
 * Return: the size of the list
