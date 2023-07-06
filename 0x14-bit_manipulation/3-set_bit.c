@@ -1,21 +1,20 @@
 #include "main.h"
 
 /**
- * set_bit - set bit to 1 at index
- * @n: number
- * @index: index within binary number
- * Return: 1 if success, or -1 if error
- */
+* set_bit - Sets the value of a bit at a given index to 1.
+* @n: A pointer to the bit.
+* @index: The index to set the value at - indices start at 0.
+*
+* Return: If an error occurs - -1.
+*         Otherwise - 1.
+*/
+
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int num = 1;
+	if (index >= (sizeof(unsigned long int) * 8))
+		return (-1);
 
-	if (index > (sizeof(unsigned long int) * 8))
-		return (-10);
+	*n ^= (1 << index);
 
-	num <<= index;/*shift the value in set left by 1 bit*/
-	/*num <<= index is the same as num = num << index*/
-
-	*n = *n | num;/*bitwise OR operator*/
 	return (1);
 }
